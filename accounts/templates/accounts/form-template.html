@@ -1,0 +1,16 @@
+{% block body %}
+{% for field in form %}
+{#    <div class="form-group">#}
+{#        <div class="col-sm-offset-2" style="width: 20%">#}
+            <span class="text-info">
+                {{ field.errors }}
+            </span>
+            <label class="sr-only-focusable">
+                {{ field.label_tag }}
+            </label>
+
+            <div class="form-horizontal">{{ field }}</div>
+{#        </div>#}
+{#    </div>#}
+{% endfor %}
+{% endblock %}

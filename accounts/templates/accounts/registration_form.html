@@ -1,0 +1,17 @@
+{% extends "blog/index.html" %}
+
+
+{% block body %}
+    <div class="input-prepend" style="padding-left: 3%">
+<form class="form-horizontal" action="" method="post" enctype="multipart/form-data" >
+    {% csrf_token %}
+    <div class="form-group">
+    {% include 'accounts/form-template.html' %}
+
+
+            <button type="submit" class="btn btn-active"><span class="glyphicon glyphicon-ok"><i>SignUP</i></button>
+
+    </div>
+</form>
+    </div>
+{% endblock %}

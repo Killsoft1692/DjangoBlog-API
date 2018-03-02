@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Blog</title>
+</head>
+<body>
+ <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">TestBlog</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="{% url 'blog:index' %}">Home</a></li>
+        <li class="active"><a href="{% url 'blog:search' %}"><span class="glyphicon glyphicon-search">Search</span></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="{% url 'accounts:register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="{% url 'accounts:logout' %}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+{% block body %}
+    <div class="col-sm-8">
+    {% if object_list|length > 0 %}
+        {% for post in object_list %}
+            <p><a href="/{{ post.slug }}">{{ post.title }}</a></p>
+            <span class="active">Posted by: {{ post.user }}</span>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <h2>Nothing to show</h2>
+    {% endif %}
+
+    {% if is_paginated %}
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+{% endblock %}
+ </div>
+
+</body>
+</html>

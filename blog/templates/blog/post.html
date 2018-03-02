@@ -1,0 +1,17 @@
+{% extends 'blog/index.html' %}
+{% block body %}
+    <h2>{{ object.title }}</h2>
+    <div class="row2">
+        <div class="col-sm-8">
+            <p>{{ object.content }}</p>
+            <p><i>Posted by: {{ object.user}}</i></p>
+            <a href="{% url 'blog:like' object.slug %}"><img style="width: 25px" src="https://image.flaticon.com/icons/png/128/14/14246.png"/></a>{{ object.likes.count }}
+            {% for item in object.comment_set.all %}
+                 <ul>
+                    <li>{{ item.content }}</li>
+                    <p><i>Posted by: </i>{{ item.user }}</p>
+                 </ul>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
