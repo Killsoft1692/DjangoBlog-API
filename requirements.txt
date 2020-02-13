@@ -20,7 +20,7 @@ openapi-codec==1.3.2
 psycopg2==2.7.4
 pysolr==3.6.0
 pytz==2017.3
-requests==2.18.4
+requests==2.20.0
 simplejson==3.13.2
 solr==0.4
 uritemplate==3.0.0
