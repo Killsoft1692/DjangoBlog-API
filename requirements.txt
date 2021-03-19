@@ -8,7 +8,7 @@ django-autofixture==0.12.1
 django-haystack==2.6.1
 django-markdown==0.8.4
 django-rest-swagger==2.1.2
-djangorestframework==3.9.1
+djangorestframework==3.11.2
 djangorestframework-jwt==1.11.0
 gunicorn==19.7.1
 idna==2.6
